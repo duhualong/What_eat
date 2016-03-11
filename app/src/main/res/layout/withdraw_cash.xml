@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/red"
+        android:layout_height="?android:attr/actionBarSize">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/withdraw_money"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            style="@style/text_big" />
+        <ImageView
+            android:id="@+id/back_left"
+            android:layout_marginStart="12dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back_1"/>
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/modify_withdraw_password"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/margin_long"
+        android:background="@drawable/bg_white_rect"
+        android:layout_height="@dimen/height_nor">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/deposit_card"
+            style="@style/text_nor"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"/>
+        <TextView
+            android:id="@+id/tv_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/account_number"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/withdraw_money"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:background="@null"
+        android:layout_height="@dimen/height_nor">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/withdraw_money"
+            style="@style/text_nor"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"/>
+        <TextView
+            android:id="@+id/tv_account_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/money"
+           android:layout_centerInParent="true"
+            android:layout_marginEnd="10dp"
+           style="@style/text_nor"/>
+    </RelativeLayout>
+<View
+   style="@style/divider"/>
+    <TextView
+        android:id="@+id/tv_predict_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_long"
+        style="@style/text_nor"
+        android:gravity="center_horizontal"
+        android:text="@string/predict_time"/>
+    <Button
+        android:id="@+id/finish"
+        android:layout_width="340dp"
+        android:layout_height="@dimen/height_short"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_longer"
+        android:text="@string/next"
+        android:textColor="@color/white"
+        style="@style/text_nor"
+        android:background="@drawable/bg_btn_orange"/>
+
+</LinearLayout>

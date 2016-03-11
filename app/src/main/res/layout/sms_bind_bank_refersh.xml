@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+   <include layout="@layout/add_bank_title"/>
+    <TextView
+        android:id="@+id/tv_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:padding="15dp"
+        android:textSize="14sp"
+        android:textColor="@color/gray"
+        android:text="@string/bind_sms_bank"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+      >
+    <EditText
+        android:id="@+id/verification_code"
+        android:layout_width="210dp"
+        android:layout_marginStart="16dp"
+        android:layout_height="@dimen/height_nor"
+        android:background="@drawable/shape1"
+        android:layout_centerVertical="true"
+        android:paddingStart="15dp"
+        style="@style/text_nor"
+        android:hint="@string/verification_code" />
+    <TextView
+        android:id="@+id/gain_verification_code"
+        android:layout_width="120dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="15dp"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="center"
+        android:gravity="center"
+        style="@style/text_nor"
+        android:text="@string/afresh_gain"
+        android:textColor="@color/white"
+        android:background="@drawable/shape2"/>
+    </RelativeLayout>
+    <Button
+        android:id="@+id/next"
+        android:layout_width="340dp"
+        android:layout_height="@dimen/height_short"
+        android:layout_gravity="center"
+        android:layout_marginTop="35dp"
+        android:text="@string/next"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:background="@drawable/bg_btn_orange"/>
+
+</LinearLayout>

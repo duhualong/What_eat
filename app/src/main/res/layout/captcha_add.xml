@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@color/red">
+        <TextView
+            android:id="@+id/bank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/captcha"
+            android:textColor="@color/white"
+            style="@style/text_big" />
+
+        <ImageView
+            android:id="@+id/back_bank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_nor"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back_1"/>
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_white_rect"
+        android:layout_marginTop="25dp"
+        android:layout_height="@dimen/height_nor">
+
+        <EditText
+            android:id="@+id/captcha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            style="@style/text_nor"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="15dp"
+            android:hint="@string/captcha"/>
+    </RelativeLayout>
+
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="340dp"
+            android:layout_height="@dimen/height_short"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/height_nor"
+            android:text="@string/btn_commit"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:background="@drawable/bg_btn_orange"/>
+
+</LinearLayout>

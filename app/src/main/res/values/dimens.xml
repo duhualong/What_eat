@@ -1,0 +1,48 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="margin_none">0dp</dimen>
+    <dimen name="divider">0.1dp</dimen>
+    <dimen name="divider_bold">1dp</dimen>
+    <dimen name="margin_short">4dp</dimen>
+    <dimen name="margin_nor">6dp</dimen>
+    <dimen name="margin_long">12dp</dimen>
+    <dimen name="margin_longer">24dp</dimen>
+    <!--padding-->
+    <dimen name="padding_short">4dp</dimen>
+    <dimen name="padding_nor">6dp</dimen>
+    <dimen name="padding_long">12dp</dimen>
+    <!--height-->
+    <dimen name="height_item">24dp</dimen>
+    <dimen name="height_short">38dp</dimen>
+    <dimen name="height_nor">48dp</dimen>
+    <dimen name="height_long">72dp</dimen>
+    <dimen name="height_longer">78dp</dimen>
+    <dimen name="height_banner">180dp</dimen>
+    <dimen name="height_subBanner">84dp</dimen>
+    <!--width-->
+    <dimen name="width_item">48dp</dimen>
+    <dimen name="width_shorter">80dp</dimen>
+    <dimen name="width_short">120dp</dimen>
+    <dimen name="width_nor">180dp</dimen>
+    <dimen name="width_long">220dp</dimen>
+    <dimen name="square">280dp</dimen>
+    <!--image size-->
+    <dimen name="img_micro">24dp</dimen>
+    <dimen name="img_small">36dp</dimen>
+    <dimen name="img_nor">48dp</dimen>
+    <dimen name="img_big">64dp</dimen>
+    <dimen name="img_large">86dp</dimen>
+    <!--navigator-->
+    <dimen name="nav_height">48dp</dimen>
+    <dimen name="nav_img_height">24dp</dimen>
+    <dimen name="nav_img_width">24dp</dimen>
+    <dimen name="nav_padding_top">1dp</dimen>
+    <!--actionbar-->
+    <dimen name="acb_iv_width">30dp</dimen>
+    <dimen name="acb_iv_height">30dp</dimen>
+    <dimen name="acb_search_width">243dp</dimen>
+    <dimen name="acb_search_height">31dp</dimen>
+</resources>

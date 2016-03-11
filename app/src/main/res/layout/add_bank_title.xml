@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@color/red">
+        <TextView
+            android:id="@+id/bank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/add_bank_information"
+            android:textColor="@color/white"
+            style="@style/text_big" />
+        <ImageView
+            android:id="@+id/back_bank"
+            android:layout_marginStart="12dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back_1"/>
+    </RelativeLayout>

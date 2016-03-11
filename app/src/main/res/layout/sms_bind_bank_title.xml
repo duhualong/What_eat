@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/actionBarSize"
+    android:background="@color/red"
+    android:layout_alignParentTop="true"
+  >
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:text="@string/sms_authentication_code"
+       style="@style/text_big"/>
+    <ImageView
+        android:id="@+id/back_left"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:src="@drawable/back_1"/>
+
+</RelativeLayout>
