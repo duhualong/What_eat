@@ -3,6 +3,7 @@ package first.com.what_eat.data;
 /**
  * 作者：` on 2016/3/11 15:17
  * 邮箱2383335125@qq.com
+ * 我的收入返回的参数
  */
 public class MyIncome {
     public int tuid;//收货人
