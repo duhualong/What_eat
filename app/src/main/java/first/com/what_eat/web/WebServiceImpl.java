@@ -7,12 +7,13 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 import java.lang.reflect.Type;
 
-import first.com.what_eat.data.MyIncome;
-import first.com.what_eat.data.NearOrder;
-import first.com.what_eat.data.OrderDetail;
-import first.com.what_eat.data.RunnerLoading;
-import first.com.what_eat.data.ServiceResponse;
+import first.com.what_eat.model.MyIncome;
+import first.com.what_eat.model.NearOrder;
+import first.com.what_eat.model.OrderDetail;
+import first.com.what_eat.model.RunnerLoading;
+import first.com.what_eat.model.ServiceResponse;
 import first.com.what_eat.global.Constant;
+import first.com.what_eat.util.EncryptUtil;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -28,6 +29,49 @@ public class WebServiceImpl implements WebService{
     public WebServiceImpl() {
         client = new HttpClient();
         gson = new Gson();
+    }
+
+    /**
+     * 成为跑腿
+     * @param phone
+     * @param password
+     * @param captcha
+     * @param nickname
+     * @param callback
+     */
+
+    @Override
+    public void getMakeRunner(String phone, String password, String captcha, String nickname, final ServiceCallback<ServiceResponse<String>> callback) {
+        String url=Constant.PUBLIC_URL+Constant.MAKE_RUNNER_URL;
+        JsonObject jsonObject=new JsonObject();
+        jsonObject.addProperty("phone",phone);
+        jsonObject.addProperty("password",password);
+        jsonObject.addProperty("telverify",captcha);
+        jsonObject.addProperty("nickname",nickname);
+        client.postWithJson(url, jsonObject.toString(), true, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                callback.onFailure("请求错误");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result=response.body().string();
+                Type type=new TypeToken<ServiceResponse<String>>(){}.getType();
+                ServiceResponse<String> serviceResponse=gson.fromJson(result, type);
+                int code=serviceResponse.getCode();
+                if (code==200){
+                    callback.onSuccess(serviceResponse);
+                    String json= EncryptUtil.decrypt(Constant.KEY,serviceResponse.getData());
+                    System.out.println("跑腿端返回数据解析结果：" + json);
+                }else {
+                    callback.onFailure("请求参数错误");
+                }
+
+            }
+        });
+
+
     }
 
     /**

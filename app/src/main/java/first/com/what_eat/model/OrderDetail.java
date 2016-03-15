@@ -1,26 +1,27 @@
-package first.com.what_eat.data;
-
+package first.com.what_eat.model;
 /**
- * 作者：` on 2016/3/11 17:07
+ * 作者：` on 2016/3/14 09:23
  * 邮箱2383335125@qq.com
- * 附近抢单页返回参数
+ * 订单详情返回的参数
  */
-public class NearOrder  {
+public class OrderDetail {
     private String orderid;//订单号
     private String storeid;//商户id
     private int callruntime;//预约取货时间
-    private float buyerlat;//收货人维度
+    private float buyerlat;//收货人纬度
     private float buyerlng;//收货人经度
-    private String buyerarea;//收货人所在地
+    private String buyerarea;//收货人所在地区
     private String buyeraddress;//收货人详细地址
     private int sellerremark;//重要说明
-    private String storearea;//商户所在地
+    private String storearea;//商户所在地区
     private String storeaddress;//商户详细地址
     private float storelat;//商户维度
     private float storelng;//商户经度
-    private float distance;//我离商户的距离km
-    private float deliverydistance;//配送距离km
     private float deliveryfee;//配送费
+    private float deliverydistance;//配送距离（km）
+    private  float duration;//配送时间（分）
+    private float distance;//我离商户的距离（km）
+    private float deliveryduration;//我离商户的时间（分）
 
     public String getOrderid() {
         return orderid;
@@ -118,12 +119,12 @@ public class NearOrder  {
         this.storelng = storelng;
     }
 
-    public float getDistance() {
-        return distance;
+    public float getDeliveryfee() {
+        return deliveryfee;
     }
 
-    public void setDistance(float distance) {
-        this.distance = distance;
+    public void setDeliveryfee(float deliveryfee) {
+        this.deliveryfee = deliveryfee;
     }
 
     public float getDeliverydistance() {
@@ -134,11 +135,26 @@ public class NearOrder  {
         this.deliverydistance = deliverydistance;
     }
 
-    public float getDeliveryfee() {
-        return deliveryfee;
+    public float getDuration() {
+        return duration;
     }
 
-    public void setDeliveryfee(float deliveryfee) {
-        this.deliveryfee = deliveryfee;
+    public void setDuration(float duration) {
+        this.duration = duration;
+    }
+
+    public float getDistance() {
+        return distance;
+    }
+
+    public void setDistance(float distance) {
+        this.distance = distance;
+    }
+
+    public float getDeliveryduration() {
+        return deliveryduration;
+    }
+    public void setDeliveryduration(float deliveryduration) {
+        this.deliveryduration = deliveryduration;
     }
 }

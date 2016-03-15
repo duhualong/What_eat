@@ -1,4 +1,4 @@
-package first.com.what_eat.data;
+package first.com.what_eat.model;
 
 /**
  * 作者：` on 2016/3/14 16:56
