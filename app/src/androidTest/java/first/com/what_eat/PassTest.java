@@ -55,4 +55,19 @@ public class PassTest extends AndroidTestCase {
         System.out.println("完善资料加密结果："+encryptData);
 
     }
+    public void testSetWorkStatus()throws Exception{
+        String sendText="{\"uid\":\"20\",\"workstatus\":\"1\"}";
+        final String encryptData = EncryptUtil.encrypt(Constant.KEY, sendText); // 加密数据
+        System.out.println("设置工作状态加密结果："+encryptData);
+    }
+    public void testSetCurrentAddress()throws Exception{
+        String sendText="{\"uid\":\"20\",\"address\":\"shanghai\",\"lat\":\"20\",\"lng\":\"20\"}";
+        final String encryptData = EncryptUtil.encrypt(Constant.KEY, sendText); // 加密数据
+        System.out.println("设置现在详细地址加密结果："+encryptData);
+    }
+    public void testReceiveOrder()throws Exception{
+        String sendText="{\"uid\":\"20\",\"orderid\":\"10\",\"lat\":\"20\",\"lng\":\"20\" }";
+        final  String encryptData=EncryptUtil.encrypt(Constant.KEY,sendText);
+        System.out.println("设置接单加密结果:"+encryptData);
+    }
 }

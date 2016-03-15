@@ -151,6 +151,83 @@ public class WebServiceImpl implements WebService{
     }
 
     /**
+     * 设置上班下班
+     * @param uid
+     * @param workStatus
+     * @param callback
+     */
+    @Override
+    public void setWorkStatus(int uid, int workStatus, final ServiceCallback<ServiceResponse<Void>> callback) {
+        String url=Constant.PUBLIC_URL+Constant.SET_WORKSTATUS_URL;
+        JsonObject jsonObject=new JsonObject();
+        jsonObject.addProperty("uid",uid);
+        jsonObject.addProperty("workstatus",workStatus);
+        client.postWithJson(url, jsonObject.toString(), true, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                callback.onFailure("请求错误");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result=response.body().string();
+                Type type=new TypeToken<ServiceResponse<Void>>(){}.getType();
+                ServiceResponse<Void>serviceResponse=gson.fromJson(result, type);
+               int code= serviceResponse.getCode();
+                if (code==200){
+                    callback.onSuccess(serviceResponse);
+
+                }else {
+                    callback.onFailure("请求错误");
+                }
+
+            }
+        });
+
+    }
+
+    /**
+     * 设置现住的地址
+     * @param uid
+     * @param address
+     * @param latitude
+     * @param longitude
+     * @param callback
+     */
+    @Override
+    public void setCurrentAddress(int uid, String address, String latitude, String longitude, final ServiceCallback<ServiceResponse<Void>> callback) {
+        String url=Constant.PUBLIC_URL+Constant.SET_CURRENT_ADDRESS_URL;
+        JsonObject jsonObject=new JsonObject();
+        jsonObject.addProperty("uid",uid);
+        jsonObject.addProperty("address",address);
+        jsonObject.addProperty("lat",latitude);
+        jsonObject.addProperty("lng",longitude);
+        client.postWithJson(url, jsonObject.toString(), true, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                callback.onFailure("参数请求错误");
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result=response.body().string();
+                Type type=new TypeToken<ServiceResponse<Void>>(){}.getType();
+                ServiceResponse<Void>serviceResponse=gson.fromJson(result,type);
+                int code=serviceResponse.getCode();
+                if (code==200){
+                    callback.onSuccess(serviceResponse);
+                }else {
+                    callback.onFailure("请求错误");
+                }
+
+            }
+        });
+
+
+    }
+
+    /**
      * 我的收入
      * @param uid
      * @param startTime
@@ -265,5 +342,59 @@ public class WebServiceImpl implements WebService{
         });
 
 
+    }
+
+    /**
+     * 接单
+     * @param uid
+     * @param orderId
+     * @param latitude
+     * @param longitude
+     * @param callback
+     */
+    @Override
+    public void getReceiveOrder(int uid, String orderId, String latitude, String longitude, final ServiceCallback<ServiceResponse<Void>> callback) {
+        String url=Constant.PUBLIC_URL+Constant.RECEIVE_ORDER;
+        JsonObject jsonObject=new JsonObject();
+        jsonObject.addProperty("uid",uid);
+        jsonObject.addProperty("orderid",orderId);
+        jsonObject.addProperty("lat",latitude);
+        jsonObject.addProperty("lng",longitude);
+        client.postWithJson(url, jsonObject.toString(), true, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                callback.onFailure("请求参数错误");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result=response.body().string();
+                Type type=new TypeToken<ServiceResponse<Void>>(){}.getType();
+                ServiceResponse<Void>serviceResponse= gson.fromJson(result, type);
+               int code= serviceResponse.getCode();
+                if (code==200){
+                    callback.onSuccess(serviceResponse);
+                }else {
+                    callback.onFailure("参数错误");
+                }
+
+            }
+        });
+    }
+
+    @Override
+    public void getDistributionOrder(int uid, String latitude, String longitude, String orderId, ServiceCallback<ServiceResponse<Void>> callback) {
+        String url=Constant.PUBLIC_URL+Constant.DISTRIBUTION_ORDER;
+
+    }
+
+    @Override
+    public void getFinishedOrder(int uid, String latitude, String longitude, String orderId, ServiceCallback<ServiceResponse<Void>> callback) {
+        String url=Constant.PUBLIC_URL+Constant.FINISHED_ORDER;
+    }
+
+    @Override
+    public void getUnReceiveOrder(int uid, String latitude, String longitude, ServiceCallback<ServiceResponse<Void>> callback) {
+        String url=Constant.PUBLIC_URL+Constant.UNRECEIVE_ORDER;
     }
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="actionbar_title" type="id"/>
+    <item name="actionbar" type="id"/>
+    <item name="et_account" type="id"/>
+    <item name="et_password" type="id"/>
+    <item name="btn_login" type="id"/>
+    <item name="tv_forget_pwd" type="id"/>
+    <item name="tv_become_businessman" type="id"/>
+    <item name="tv_become_provider" type="id"/>
+    <item name="tv_become_deliveryman" type="id"/>
+    <item name="progress_bar" type="id"/>
+</resources>
