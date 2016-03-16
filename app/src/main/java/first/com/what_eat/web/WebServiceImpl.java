@@ -7,6 +7,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 import java.lang.reflect.Type;
 
+import first.com.what_eat.model.MakeRunner;
 import first.com.what_eat.model.MyIncome;
 import first.com.what_eat.model.NearOrder;
 import first.com.what_eat.model.OrderDetail;
@@ -41,7 +42,7 @@ public class WebServiceImpl implements WebService{
      */
 
     @Override
-    public void getMakeRunner(String phone, String password, String captcha, String nickname, final ServiceCallback<ServiceResponse<String>> callback) {
+    public void getMakeRunner(String phone, String password, String captcha, String nickname, final ServiceCallback<MakeRunner> callback) {
         String url=Constant.PUBLIC_URL+Constant.MAKE_RUNNER_URL;
         JsonObject jsonObject=new JsonObject();
         jsonObject.addProperty("phone",phone);
@@ -61,16 +62,18 @@ public class WebServiceImpl implements WebService{
                 ServiceResponse<String> serviceResponse=gson.fromJson(result, type);
                 int code=serviceResponse.getCode();
                 if (code==200){
-                    callback.onSuccess(serviceResponse);
                     String json= EncryptUtil.decrypt(Constant.KEY,serviceResponse.getData());
                     System.out.println("跑腿端返回数据解析结果：" + json);
+                    Type returnType=new TypeToken<ServiceResponse<MakeRunner>>(){}.getType();
+                   MakeRunner makeRunner=gson.fromJson(json, returnType);
+                    callback.onSuccess(makeRunner);
+
                 }else {
                     callback.onFailure("请求参数错误");
                 }
 
             }
         });
-
 
     }
 
@@ -83,7 +86,7 @@ public class WebServiceImpl implements WebService{
      */
 
     @Override
-    public void getRunnerLoading(String username, String password, int groupId, final ServiceCallback<ServiceResponse<RunnerLoading>> callback) {
+    public void getRunnerLoading(String username, String password, int groupId, final ServiceCallback<RunnerLoading> callback) {
         String url=Constant.PUBLIC_URL+Constant.RUNNER_LOADING_URL;
         JsonObject jsonObject=new JsonObject();
         jsonObject.addProperty("username",username);
@@ -98,11 +101,17 @@ public class WebServiceImpl implements WebService{
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String result=response.body().string();
-                Type type=new TypeToken<ServiceResponse<RunnerLoading>>(){}.getType();
-                ServiceResponse<RunnerLoading> serviceResponse=gson.fromJson(result, type);
+                Type type=new TypeToken<ServiceResponse<String>>(){}.getType();
+                ServiceResponse<String> serviceResponse=gson.fromJson(result, type);
+
                 int code=serviceResponse.getCode();
                 if (code==200){
-                    callback.onSuccess(serviceResponse);
+                    String json= EncryptUtil.decrypt(Constant.KEY,serviceResponse.getData());
+                    System.out.println("跑腿端返回数据解析结果：" + json);
+                    Type returnType = new TypeToken<RunnerLoading>(){}.getType();
+                    RunnerLoading runnerLoading=gson.fromJson(json, returnType);
+                    callback.onSuccess(runnerLoading);
+
                 }else {
                     callback.onFailure("请求错误");
                 }

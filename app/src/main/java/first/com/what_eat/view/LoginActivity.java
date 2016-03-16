@@ -11,7 +11,6 @@ import butterknife.Bind;
 import butterknife.OnClick;
 import first.com.what_eat.R;
 import first.com.what_eat.model.RunnerLoading;
-import first.com.what_eat.model.ServiceResponse;
 import first.com.what_eat.web.ServiceCallback;
 
 /**
@@ -30,10 +29,10 @@ public class LoginActivity extends BaseActivity{
                 progressBar.setVisibility(View.VISIBLE);
                 final String username=account.getText().toString().trim();
                 final String pwd=password.getText().toString().trim();
-                int groupId=4;
-                webService.getRunnerLoading(username, pwd, groupId, new ServiceCallback<ServiceResponse<RunnerLoading>>() {
+                final int groupId=4;
+                webService.getRunnerLoading(username, pwd, groupId, new ServiceCallback<RunnerLoading>() {
                     @Override
-                    public void onSuccess(ServiceResponse<RunnerLoading> data) {
+                    public void onSuccess(RunnerLoading data) {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -41,7 +40,11 @@ public class LoginActivity extends BaseActivity{
                                 SharedPreferences.Editor editor=app.getSharedPreferences().edit();
                                 editor.putString("telephone",username);
                                 editor.putString("password",pwd);
+                                editor.putInt("groupId", groupId);
                                 editor.apply();
+                                LoginActivity.this.finish();
+                                startActivity(new Intent(getApplicationContext(), HomeRunnerActivity.class));
+
                             }
                         });
 
@@ -49,9 +52,15 @@ public class LoginActivity extends BaseActivity{
                     }
 
                     @Override
-                    public void onFailure(String msg) {
-                        progressBar.setVisibility(View.INVISIBLE);
-                        Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
+                    public void onFailure(final String msg) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                progressBar.setVisibility(View.INVISIBLE);
+                                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                            }
+                        });
+
 
                     }
                 });

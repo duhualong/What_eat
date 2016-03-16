@@ -1,48 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="#f7844d"
+    android:background="@color/orange"
+    android:layout_alignParentTop="true"
     android:layout_height="?android:attr/actionBarSize">
-
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
           android:layout_centerInParent="true">
 
             <TextView
-                android:id="@+id/tv_dida"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="滴答"
+                android:text="@string/tickTack"
                 android:layout_gravity="center_vertical"
-                android:textSize="18sp"
+                style="@style/text_big"
                 android:textColor="#ffffff"/>
             <ImageView
-                android:id="@+id/paotui"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="5dp"
-                android:src="@drawable/paotui_title"/>
+                android:layout_marginStart="5dp"
+                android:src="@drawable/runner_title"/>
             <TextView
-                android:id="@+id/kuaisong"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="快送"
+                android:layout_marginStart="5dp"
+                android:text="@string/fast_delivery"
                 android:layout_gravity="center_vertical"
-                android:textSize="18sp"
+                style="@style/text_big"
                 android:textColor="#ffffff"/>
         </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" 跑腿途中"
+            android:text="@string/runner_way"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="5dp"
-            android:textSize="16sp"
+            android:layout_marginEnd="8dp"
+            style="@style/text_big"
             android:textColor="#ffffff" />
-
 </RelativeLayout>

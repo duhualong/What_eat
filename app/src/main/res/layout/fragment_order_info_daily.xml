@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/actionbar_nor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_short"
+        android:layout_margin="@dimen/margin_nor"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@id/et_order_serial_number"
+            style="@style/text_nor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/margin_nor"
+            android:layout_marginRight="@dimen/margin_nor"
+            android:layout_weight="4"
+            android:background="@drawable/bg_white_rect"
+            android:gravity="center_vertical"
+            android:hint="@string/order_serial_number_search_hint"
+            android:inputType="number"
+            android:lines="1"
+            android:paddingLeft="@dimen/padding_nor"
+            android:paddingRight="@dimen/padding_nor" />
+
+        <Button
+            android:id="@id/btn_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_btn_green"
+            android:text="@string/search"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

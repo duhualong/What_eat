@@ -38,7 +38,7 @@ public class PassTest extends AndroidTestCase {
         String jsonStr = EncryptUtil.decrypt(Constant.KEY, receiveText);
         System.out.println("解密结果: " + jsonStr);
     }
-//    public void testDecrypt()throws Exception{
+//      public void testDecrypt()throws Exception{
 //        String receiveText ="fxUvAO5uG0rp3NM683chhR1wqh8cVE7xF8k4uGSv1SJBW39r0CF2t" +
 //                "JlEKW9BP0Nrs5AZ8KM1mIbkWI0AnrGpYyHTT/7t0K2aZCFjfBxZ/8qOMnU54g3tC8V2hpMxlZvacO1B+lmvmFk5Xrxc7O32hBuA9c92cnH5Xfve5PHKlz+" +
 //                "pGwRZIitx+9fntGUbIgcLFYrHFt8tNFIuDmFkiNJiSdgUJSQT23F4hrvFVUfcUq492vS6OFL0pGiE7L0tkWdCkMHGupybMLZj1E5HiiIPZHcRfOYh2adP8g0WjX1qQAgkxXPn1l" +

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e3e2e2">
+
+  <include layout="@layout/runner_title"/>
+        <LinearLayout
+            android:id="@id/transportation_tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+           android:layout_marginTop="320dp" >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/car"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/car"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="56dp"
+                android:orientation="vertical">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/moped"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/moped"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/transportation_tools"
+            android:orientation="horizontal">
+        <Button
+            android:id="@+id/call_runner"
+            android:layout_width="120dp"
+            android:layout_height="@dimen/height_short"
+            android:background="@drawable/shape2"
+            android:textColor="#ffffff"
+            style="@style/text_nor"
+            android:text="@string/callRunner"/>
+        <Button
+            android:id="@+id/reservation_runner"
+            android:layout_width="120dp"
+            android:layout_height="@dimen/height_short"
+            android:layout_marginStart="30dp"
+            android:text="@string/reservation_runner"
+            android:background="@drawable/shape5"
+            android:textColor="#ffffff"
+           style="@style/text_nor"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#ffffff"
+        android:orientation="vertical">
+    <include layout="@layout/ticktack_bottom_runner"/>
+    </LinearLayout>
+</RelativeLayout>

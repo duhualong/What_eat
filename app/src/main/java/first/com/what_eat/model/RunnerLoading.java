@@ -6,8 +6,6 @@ package first.com.what_eat.model;
  * 跑腿端登陆返回的参数
  */
 public class RunnerLoading {
-
-
     private String uid;
     private String rongyun_token;
     private String integral_bpay;

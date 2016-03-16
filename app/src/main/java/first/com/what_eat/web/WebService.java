@@ -1,5 +1,6 @@
 package first.com.what_eat.web;
 
+import first.com.what_eat.model.MakeRunner;
 import first.com.what_eat.model.MyIncome;
 import first.com.what_eat.model.NearOrder;
 import first.com.what_eat.model.OrderDetail;
@@ -12,10 +13,10 @@ import first.com.what_eat.model.ServiceResponse;
  */
 public interface WebService {
     //成为跑腿
-    void getMakeRunner(String phone, String password, String captcha, String nickname, ServiceCallback<ServiceResponse<String>> callback);
+    void getMakeRunner(String phone, String password, String captcha, String nickname, ServiceCallback<MakeRunner> callback);
 
     //跑腿端登录
-    void getRunnerLoading(String username, String password, int groupId, ServiceCallback<ServiceResponse<RunnerLoading>> callback);
+    void getRunnerLoading(String username, String password, int groupId, ServiceCallback<RunnerLoading> callback);
 
     //完善资料
     void updatePerfectData(int uid, String prefectField, String prefectValue, ServiceCallback<ServiceResponse<Void>> callback);

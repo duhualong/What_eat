@@ -10,4 +10,27 @@
     <item name="tv_become_provider" type="id"/>
     <item name="tv_become_deliveryman" type="id"/>
     <item name="progress_bar" type="id"/>
+    <item name="switch_status" type="id"/>
+    <item name="my_income" type="id"/>
+    <item name="transportation_tools" type="id"/>
+    <item name="tv_item_order_status" type="id"/>
+    <item name="tv_item_order_serial_number" type="id"/>
+    <item name="tv_item_order_date_time" type="id"/>
+    <item name="iv_item_prod_thumb" type="id"/>
+    <item name="tv_item_prod_title" type="id"/>
+    <item name="actionbar_back" type="id"/>
+    <item name="et_order_serial_number" type="id"/>
+    <item name="actionbar_stub" type="id"/>
+    <item name="btn_search" type="id"/>
+    <item name="tv_order_type_takeaway" type="id"/>
+    <item name="order_takeaway" type="id"/>
+    <item name="order_number" type="id"/>
+    <item name="img_order" type="id"/>
+    <item name="description" type="id"/>
+    <item name="actual_paid" type="id"/>
+    <item name="actual_paid_money" type="id"/>
+    <item name="number" type="id"/>
+    <item name="number_detail" type="id"/>
+    <item name="totalPaid" type="id"/>
+
 </resources>

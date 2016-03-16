@@ -65,6 +65,29 @@
     <string name="become_businessman">成为商户</string>
     <string name="become_provider">成为供应商</string>
     <string name="become_deliveryman">成为跑腿</string>
+    <string name="home">首页</string>
+    <string name="invitation_friend_join">邀请朋友加入</string>
+    <string name="work_status">上班下班</string>
+    <string name="fast_delivery">快送</string>
+    <string name="tickTack">滴答</string>
+    <string name="runner_way">跑腿途中</string>
+    <string name="callRunner">呼叫跑腿</string>
+    <string name="reservation_runner">预约跑腿</string>
+    <string name="car">汽车</string>
+    <string name="moped">助动车</string>
+    <string name="order_serial_number_search_hint">请输入订单编号</string>
+    <string name="search">搜索</string>
+    <string name="waite_deliver_order">待发货</string>
+    <string name="order_number">1234567890123455</string>
+    <string name="data">03/16 12:12</string>
+    <string name="description">山东红富士苹果特价优惠清脆爽口\n水分多还打折限时抢购</string>
+    <string name="actual_paid">实付:￥%1$s</string>
+    <string name="twenty">20</string>
+    <string name="product_number">数量：%1$skg</string>
+    <string name="number_buy">1.2</string>
+    <string name="total_paid">￥%1$s(含运费￥%2$s)</string>
+    <string name="delivery">配送</string>
+    <string name="delivery_staff">lily</string>
 
     <string-array name="bank">
             <item>请选择银行</item>
