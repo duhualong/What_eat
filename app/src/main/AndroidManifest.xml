@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".view.HomeRunnerActivity"/>
         <activity android:name=".view.ForgetPasswordActivity"/>
+        <activity android:name=".data.OrderDetailRunner"/>
         <uses-library android:name="android.test.runner" />
 
     </application>

@@ -32,5 +32,34 @@
     <item name="number" type="id"/>
     <item name="number_detail" type="id"/>
     <item name="totalPaid" type="id"/>
+    <item name="icVoice" type="id"/>
+    <item name="runner_title" type="id"/>
+    <item name="cashPayment" type="id"/>
+    <item name="immediateDelivery" type="id"/>
+    <item name="important_remark" type="id"/>
+    <item name="shipments" type="id"/>
+    <item name="shopName" type="id"/>
+    <item name="shopPhone" type="id"/>
+    <item name="receiveAddress" type="id"/>
+    <item name="receiverName" type="id"/>
+    <item name="receiverPhone" type="id"/>
+    <item name="commodityInformation" type="id"/>
+    <item name="commodityName" type="id"/>
+    <item name="commodityType" type="id"/>
+    <item name="commodityValue" type="id"/>
+    <item name="commodityWeight" type="id"/>
+    <item name="transportationTools" type="id"/>
+    <item name="delivery" type="id"/>
+    <item name="commodity" type="id"/>
+    <item name="commodityPrice" type="id"/>
+
+    <item name="runnerName" type="id"/>
+    <item name="runnerPhone" type="id"/>
+    <item name="distance" type="id"/>
+    <item name="predictArrive" type="id"/>
+    <item name="orderStatus" type="id"/>
+    <item name="btOrderStatus" type="id"/>
+    <item name="lvRunnerWay" type="id"/>
+
 
 </resources>

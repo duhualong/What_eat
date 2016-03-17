@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:layout_marginTop="2dp"
+                style="@style/text_nor"
+                android:text="@string/booking_cargo"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/delivery_time"
+                style="@style/text_nor"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/red_light"/>
+
+        </LinearLayout>
+        <View
+          style="@style/divider_vertical"  />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:layout_marginTop="2dp"
+                style="@style/text_nor"
+                android:text="@string/delivery_fee"/>
+            <TextView
+                android:id="@id/cashPayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cash_payment"
+                style="@style/text_nor"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/red_light"/>
+        </LinearLayout>
+    </LinearLayout>
+<View
+    style="@style/divider"/>
+    <ImageView
+        android:id="@id/immediateDelivery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/immediate_delivery"
+        android:padding="10dp"/>
+    <View
+        style="@style/divider"/>
+
+</LinearLayout>

@@ -88,6 +88,33 @@
     <string name="total_paid">￥%1$s(含运费￥%2$s)</string>
     <string name="delivery">配送</string>
     <string name="delivery_staff">lily</string>
+    <string name="order_detail">订单详情</string>
+    <string name="cash_payment">现付%1$s元</string>
+    <string name="delivery_fee">配送费用</string>
+    <string name="booking_cargo">预约取货</string>
+    <string name="delivery_time">04&#8211;22 14:20</string>
+    <string name="important_remark">重要说明：%1$s</string>
+    <string name="commodity_information">商品信息：%1$s</string>
+    <string name="commodity_name">商品名称：%1$s</string>
+    <string name="commodity_type">商品类型：%1$s</string>
+    <string name="commodity_value">商品价值：%1$s</string>
+    <string name="commodity_weight">商品重量：%1$s</string>
+    <string name="transportation_tools">交通工具：%1$s</string>
+    <string name="shipments">发货地：&#160;&#160;&#160;&#160;%1$s</string>
+    <string name="shop_name">店&#160;&#160;&#160;&#160;名：&#160;&#160;&#160;&#160;%1$s</string>
+    <string name="shop_phone">电&#160;&#160;&#160;&#160;话：&#160;&#160;&#160;&#160;%1$s</string>
+    <string name="receive_address">收货地：&#160;&#160;&#160;&#160;%1$s</string>
+    <string name="receiver_name">姓&#160;&#160;&#160;&#160;名：&#160;&#160;&#160;&#160;%1$s</string>
+    <string name="receiver_phone">电&#160;&#160;&#160;&#160;话：&#160;&#160;&#160;&#160;%1$s</string>
+    <string name="delivering">配送中</string>
+    <string name="commodity">商品</string>
+    <string name="price">￥20.00</string>
+
+    <string name="runner_name">跑腿姓名：&#160;&#160;&#160;&#160;%1$s</string>
+    <string name="runner_phone">电&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;话：&#160;&#160;&#160;&#160;%1$s</string>
+    <string name="runner_distance_custom">距离客户：&#160;&#160;&#160;&#160;%1$skm</string>
+    <string name="order_status">订单状态：&#160;&#160;&#160;&#160;%1$skm</string>
+    <string name="predict_arrive_time">预计送达：&#160;&#160;&#160;&#160;%1$s(提前%2$s分钟)</string>
 
     <string-array name="bank">
             <item>请选择银行</item>

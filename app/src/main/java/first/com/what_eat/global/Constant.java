@@ -19,7 +19,6 @@ public class Constant {
     public static final String SET_WORKSTATUS_URL="/index.php/Api/Run/set_workstatus.html";
     //7-4 设置现住的地址
     public static final String SET_CURRENT_ADDRESS_URL="/index.php/Api/Run/set_address.html";
-
     //7-5我的收入
     public  static final String MY_INCOME ="/index.php/Api/Run/get_myincome.html";
 
@@ -35,8 +34,25 @@ public class Constant {
     public static  final String FINISHED_ORDER="/index.php/Api/Run/doneorder.html";
     //7-11未接订单
     public static final String UNRECEIVE_ORDER="/index.php/Api/Run/notgetorder.html";
-
-
-
+    //7-12 我的收入
+    public static final String MYEARN_URL="/index.php/Api/Run/get_myearn.html";
+    //7-13 我的奖励
+    public static final String MYREWARD_URL="/index.php/Api/Run/get_myreward.html";
+    //7-14 绑定银行卡
+    public static final String BINDBANK_URL="/index.php/Api/Run/bindbank.html";
+    //7-15解除绑定银行卡
+    public static final String UNBINDBANK_URL="/index.php/Api/Run/unbindbank.html";
+    //7-16我的银行卡
+    public static final String MYBANK_URL="/index.php/Api/Run/get_mybank.html";
+    //7-17 设置提现密码
+    public static final String  WITHDRAWPASSWORD_URL="/index.php/Api/Run/set_paypassword.html";
+    //7-18验证提现密码
+    public static final String   VERIFWITHDRAWPASSWORD_URL="/index.php/Api/Run/verify_paypassword.html";
+    //7-19 修改提现密码
+    public static final String MODIFYWITHDRAWPASSWORD_URL="/index.php/Api/Run/change_paypassword.html";
+    //7-20 申请提现
+    public static final String APPLYWITHDRAWAL_URL="/index.php/Api/Run/apply_withdrawal.html";
+    //7-21 邀请兄弟
+    public static final String INVITEBROTHER_URL="/index.php/Api/Run/invite_brother.htm";
 
 }

@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-    <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/actionBarSize"
     android:layout_alignParentTop="true"
-        android:background="@color/red">
-        <TextView
-            android:id="@+id/income_withdraw"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/income_withdraw"
-            android:textColor="@color/white"
-            style="@style/text_big" />
-        <ImageView
-            android:id="@+id/back_left"
-            android:layout_marginStart="12dp"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_centerVertical="true"
-            android:src="@drawable/back_1"/>
-    </RelativeLayout>
+    android:background="@color/red">
+
+    <TextView
+        android:id="@+id/income_withdraw"
+        style="@style/text_big"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/income_withdraw"
+        android:textColor="@color/white" />
+
+    <ImageView
+        android:id="@+id/back_left"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="12dp"
+        android:src="@drawable/back_1" />
+</RelativeLayout>
 
