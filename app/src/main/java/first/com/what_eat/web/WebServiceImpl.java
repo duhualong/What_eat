@@ -7,10 +7,13 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 import java.lang.reflect.Type;
 
+import first.com.what_eat.model.FinishedOrder;
+import first.com.what_eat.model.GetMyBrother;
 import first.com.what_eat.model.MakeRunner;
 import first.com.what_eat.model.MyBankMessage;
 import first.com.what_eat.model.MyEarn;
 import first.com.what_eat.model.MyIncome;
+import first.com.what_eat.model.MyInvitation;
 import first.com.what_eat.model.MyReward;
 import first.com.what_eat.model.NearOrder;
 import first.com.what_eat.model.OrderDetail;
@@ -45,7 +48,7 @@ public class WebServiceImpl implements WebService{
      */
 
     @Override
-    public void getMakeRunner(String phone, String password, String captcha, String nickname, final ServiceCallback<MakeRunner> callback) {
+    public void getMakeRunner(String phone, String password, String captcha, String nickname, final ServiceCallback<ServiceResponse<MakeRunner>> callback) {
         String url=Constant.PUBLIC_URL+Constant.MAKE_RUNNER_URL;
         JsonObject jsonObject=new JsonObject();
         jsonObject.addProperty("phone",phone);
@@ -68,7 +71,7 @@ public class WebServiceImpl implements WebService{
                     String json= EncryptUtil.decrypt(Constant.KEY,serviceResponse.getData());
                     System.out.println("跑腿端返回数据解析结果：" + json);
                     Type returnType=new TypeToken<ServiceResponse<MakeRunner>>(){}.getType();
-                   MakeRunner makeRunner=gson.fromJson(json, returnType);
+                  ServiceResponse<MakeRunner>  makeRunner=gson.fromJson(json, returnType);
                     callback.onSuccess(makeRunner);
 
                 }else {
@@ -89,7 +92,7 @@ public class WebServiceImpl implements WebService{
      */
 
     @Override
-    public void getRunnerLoading(String username, String password, int groupId, final ServiceCallback<RunnerLoading> callback) {
+    public void getRunnerLoading(String username, String password, int groupId, final ServiceCallback<ServiceResponse<RunnerLoading>> callback) {
         String url=Constant.PUBLIC_URL+Constant.RUNNER_LOADING_URL;
         JsonObject jsonObject=new JsonObject();
         jsonObject.addProperty("username",username);
@@ -111,8 +114,8 @@ public class WebServiceImpl implements WebService{
                 if (code==200){
                     String json= EncryptUtil.decrypt(Constant.KEY,serviceResponse.getData());
                     System.out.println("跑腿端返回数据解析结果：" + json);
-                    Type returnType = new TypeToken<RunnerLoading>(){}.getType();
-                    RunnerLoading runnerLoading=gson.fromJson(json, returnType);
+                    Type returnType = new TypeToken<ServiceResponse<RunnerLoading>>(){}.getType();
+                    ServiceResponse<RunnerLoading> runnerLoading=gson.fromJson(json, returnType);
                     callback.onSuccess(runnerLoading);
 
                 }else {
@@ -417,20 +420,67 @@ public class WebServiceImpl implements WebService{
      * @param callback
      */
     @Override
-    public void getFinishedOrder(int uid, String latitude, String longitude, String orderId, ServiceCallback<ServiceResponse<Void>> callback) {
+    public void getFinishedOrder(int uid, String latitude, String longitude, String orderId, final ServiceCallback<ServiceResponse<FinishedOrder>> callback) {
         String url=Constant.PUBLIC_URL+Constant.FINISHED_ORDER;
+        JsonObject jsonObject=new JsonObject();
+        jsonObject.addProperty("uid",uid);
+        jsonObject.addProperty("lat",latitude);
+        jsonObject.addProperty("lng",longitude);
+        jsonObject.addProperty("keyword",orderId);
+        client.postWithJson(url, jsonObject.toString(), false, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                callback.onFailure("");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result=response.body().string();
+                Type type=new TypeToken<ServiceResponse<FinishedOrder>>(){}.getType();
+                ServiceResponse<FinishedOrder>serviceResponse= gson.fromJson(result, type);
+                int code=serviceResponse.getCode();
+                if (code==200){
+                    callback.onSuccess(serviceResponse);
+                }else {
+                    callback.onFailure("");
+                }
+            }
+        });
     }
 
     /**
-     * 未接订单
-     * @param uid
-     * @param latitude
-     * @param longitude
+     *  未接订单
+     * @param uid 用户id
+     * @param latitude 纬度
+     * @param longitude 经度
      * @param callback
      */
     @Override
-    public void getUnReceiveOrder(int uid, String latitude, String longitude, ServiceCallback<ServiceResponse<Void>> callback) {
+    public void getUnReceiveOrder(int uid, String latitude, String longitude, final ServiceCallback<ServiceResponse<Void>> callback) {
         String url=Constant.PUBLIC_URL+Constant.UNRECEIVE_ORDER;
+        JsonObject jsonObject=new JsonObject();
+        jsonObject.addProperty("uid",uid);
+        jsonObject.addProperty("lat",latitude);
+        jsonObject.addProperty("lng",longitude);
+        client.postWithJson(url, jsonObject.toString(), false, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                callback.onFailure("");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result=response.body().string();
+                Type type=new TypeToken<ServiceResponse<Void>>(){}.getType();
+                ServiceResponse<Void>serviceResponse= gson.fromJson(result, type);
+                int code=serviceResponse.getCode();
+                if (code==200){
+                    callback.onSuccess(serviceResponse);
+                }else {
+                    callback.onFailure("");
+                }
+            }
+        });
     }
 
     /**
@@ -754,5 +804,155 @@ String url=Constant.PUBLIC_URL+Constant.BINDBANK_URL;
             }
         });
 
+    }
+    /**
+     * 邀请兄弟
+     * @param uid 用户id
+     * @param invitationCode 邀请码
+     * @param callback
+     */
+    @Override
+    public void inviteBrother(int uid, String invitationCode, final ServiceCallback<ServiceResponse<Void>> callback) {
+        String url=Constant.PUBLIC_URL+Constant.INVITEBROTHER_URL;
+        JsonObject jsonObject=new JsonObject();
+        jsonObject.addProperty("uid",uid);
+        jsonObject.addProperty("tuijiancode",invitationCode);
+        client.postWithJson(url, jsonObject.toString(), true, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                callback.onFailure("请求错误");
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result=response.body().string();
+                Type type=new TypeToken<ServiceResponse<Void>>(){}.getType();
+                ServiceResponse<Void>serviceResponse= gson.fromJson(result, type);
+                int code=serviceResponse.getCode();
+                if (code==200){
+                    callback.onSuccess(serviceResponse);
+                }else {
+                    callback.onFailure("提交失败");
+                }
+
+
+            }
+        });
+
+    }
+
+    /**
+     * 处理邀请
+     * @param uid 用户id
+     * @param inviteUserId 邀请用户id
+     * @param status 状态2同意3拒绝
+     * @param callback
+     */
+    @Override
+    public void handleInvitation(int uid, int inviteUserId, int status, final ServiceCallback<ServiceResponse<Void>> callback) {
+        String url=Constant.PUBLIC_URL+Constant.HANDLEINVITATION_URL;
+        JsonObject jsonObject=new JsonObject();
+        jsonObject.addProperty("uid",uid);
+        jsonObject.addProperty("fuid",inviteUserId);
+        jsonObject.addProperty("status",status);
+        client.postWithJson(url, jsonObject.toString(), true, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                callback.onFailure("请求错误");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result=response.body().string();
+                Type type=new TypeToken<ServiceResponse<Void>>(){}.getType();
+                ServiceResponse<Void> serviceResponse=gson.fromJson(result, type);
+                     int  code=serviceResponse.getCode();
+                if (code==200){
+                    callback.onSuccess(serviceResponse);
+                }else {
+                    callback.onFailure("提交错误");
+                }
+
+            }
+        });
+
+    }
+
+    /**
+     * 我的邀请
+     * @param uid 用户id
+     * @param page 页码
+     * @param pageNumber 每页数据量
+     * @param callback
+     */
+    @Override
+    public void getMyInvitation(int uid, int page, int pageNumber, final ServiceCallback<ServiceResponse<MyInvitation>> callback) {
+        String url=Constant.PUBLIC_URL+Constant.MYINVITATION_URL;
+        JsonObject jsonObject=new JsonObject();
+        jsonObject.addProperty("uid",uid);
+        jsonObject.addProperty("p",page);
+        jsonObject.addProperty("num",pageNumber);
+        client.postWithJson(url, jsonObject.toString(), false, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                callback.onFailure("参数有误");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result=response.body().string();
+                Type type=new TypeToken<ServiceResponse<MyInvitation>>(){}.getType();
+                ServiceResponse<MyInvitation>serviceResponse= gson.fromJson(result, type);
+                int code=serviceResponse.getCode();
+                if (code==200){
+                    callback.onSuccess(serviceResponse);
+                }else {
+                    callback.onFailure("数据为空");
+                }
+
+            }
+        });
+
+    }
+    /**
+     *获取我的兄弟
+     * @param uid 用户id
+     * @param collation 排序规则
+     * @param keyword 搜索关键词
+     * @param page 页码
+     * @param pageNumber 每页数据
+     * @param callback 回调
+     */
+    @Override
+    public void getMyBrother(int uid, int collation, String keyword, int page, int pageNumber, final ServiceCallback<ServiceResponse<GetMyBrother>> callback) {
+        String url=Constant.PUBLIC_URL+Constant.GETMYBROTHER_URL;
+        JsonObject jsonObject=new JsonObject();
+        jsonObject.addProperty("uid",uid);
+        jsonObject.addProperty("ordertype",collation);
+        jsonObject.addProperty("keyword",keyword);
+        jsonObject.addProperty("p",page);
+        jsonObject.addProperty("num",pageNumber);
+        client.postWithJson(url, jsonObject.toString(), false, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                callback.onFailure("参数有误");
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result=response.body().string();
+                Type type=new TypeToken<ServiceResponse<GetMyBrother>>(){}.getType();
+                ServiceResponse<GetMyBrother>serviceResponse= gson.fromJson(result, type);
+                int code=serviceResponse.getCode();
+                if (code==200){
+                    callback.onSuccess(serviceResponse);
+                }else {
+                    callback.onFailure("参数错误");
+                }
+
+            }
+        });
     }
 }

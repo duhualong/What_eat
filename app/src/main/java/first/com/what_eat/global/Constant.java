@@ -53,6 +53,12 @@ public class Constant {
     //7-20 申请提现
     public static final String APPLYWITHDRAWAL_URL="/index.php/Api/Run/apply_withdrawal.html";
     //7-21 邀请兄弟
-    public static final String INVITEBROTHER_URL="/index.php/Api/Run/invite_brother.htm";
+    public static final String INVITEBROTHER_URL="/index.php/Api/Run/invite_brother.html";
+    //7-22 处理邀请
+    public static final String HANDLEINVITATION_URL="/index.php/Api/Run/do_invite.html";
+    //7-23 我的邀请
+    public static final String MYINVITATION_URL="/index.php/Api/Run/get_myinvite.html";
+    //7-24 获取我的兄弟
+    public static final String GETMYBROTHER_URL="/index.php/Api/Run/get_mybrother.html";
 
 }

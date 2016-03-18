@@ -115,5 +115,11 @@ public void testVerifyWithdrawPassword()throws Exception{
         final  String encryptData=EncryptUtil.encrypt(Constant.KEY,sendText);
         System.out.println("设置邀请兄弟加密结果:"+encryptData);
     }
+    //处理邀请
+    public void testHandleInvite()throws Exception{
+        String sendText="{\"uid\":20,\"fuid\":2,\"status\":2}";
+        final  String encryptData=EncryptUtil.encrypt(Constant.KEY,sendText);
+        System.out.println("设置处理邀请加密结果:"+encryptData);
+    }
 
 }

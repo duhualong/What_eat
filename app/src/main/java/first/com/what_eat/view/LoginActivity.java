@@ -11,6 +11,7 @@ import butterknife.Bind;
 import butterknife.OnClick;
 import first.com.what_eat.R;
 import first.com.what_eat.model.RunnerLoading;
+import first.com.what_eat.model.ServiceResponse;
 import first.com.what_eat.web.ServiceCallback;
 
 /**
@@ -30,16 +31,16 @@ public class LoginActivity extends BaseActivity{
                 final String username=account.getText().toString().trim();
                 final String pwd=password.getText().toString().trim();
                 final int groupId=4;
-                webService.getRunnerLoading(username, pwd, groupId, new ServiceCallback<RunnerLoading>() {
+                webService.getRunnerLoading(username, pwd, groupId, new ServiceCallback<ServiceResponse<RunnerLoading>>() {
                     @Override
-                    public void onSuccess(RunnerLoading data) {
+                    public void onSuccess(ServiceResponse<RunnerLoading> data) {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 progressBar.setVisibility(View.INVISIBLE);
-                                SharedPreferences.Editor editor=app.getSharedPreferences().edit();
-                                editor.putString("telephone",username);
-                                editor.putString("password",pwd);
+                                SharedPreferences.Editor editor = app.getSharedPreferences().edit();
+                                editor.putString("telephone", username);
+                                editor.putString("password", pwd);
                                 editor.putInt("groupId", groupId);
                                 editor.apply();
                                 LoginActivity.this.finish();
@@ -47,8 +48,6 @@ public class LoginActivity extends BaseActivity{
 
                             }
                         });
-
-
                     }
 
                     @Override
@@ -57,26 +56,23 @@ public class LoginActivity extends BaseActivity{
                             @Override
                             public void run() {
                                 progressBar.setVisibility(View.INVISIBLE);
-                                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                 Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                             }
                         });
 
 
                     }
                 });
-
                 break;
             case R.id.tv_forget_pwd:
                 startActivity(new Intent(this,ForgetPasswordActivity.class));
                 break;
             case R.id.tv_become_deliveryman:
 
-
-
-
                 break;
         }
     }
+
     @Override
     protected int getContentView() {
         return R.layout.activity_login;

@@ -1,9 +1,12 @@
 package first.com.what_eat.web;
 
+import first.com.what_eat.model.FinishedOrder;
+import first.com.what_eat.model.GetMyBrother;
 import first.com.what_eat.model.MakeRunner;
 import first.com.what_eat.model.MyBankMessage;
 import first.com.what_eat.model.MyEarn;
 import first.com.what_eat.model.MyIncome;
+import first.com.what_eat.model.MyInvitation;
 import first.com.what_eat.model.MyReward;
 import first.com.what_eat.model.NearOrder;
 import first.com.what_eat.model.OrderDetail;
@@ -16,10 +19,10 @@ import first.com.what_eat.model.ServiceResponse;
  */
 public interface WebService {
     //成为跑腿
-    void getMakeRunner(String phone, String password, String captcha, String nickname, ServiceCallback<MakeRunner> callback);
+    void getMakeRunner(String phone, String password, String captcha, String nickname, ServiceCallback<ServiceResponse<MakeRunner>> callback);
 
     //跑腿端登录
-    void getRunnerLoading(String username, String password, int groupId, ServiceCallback<RunnerLoading> callback);
+    void getRunnerLoading(String username, String password, int groupId, ServiceCallback<ServiceResponse<RunnerLoading>> callback);
 
     //完善资料
     void updatePerfectData(int uid, String prefectField, String prefectValue, ServiceCallback<ServiceResponse<Void>> callback);
@@ -45,10 +48,26 @@ public interface WebService {
     //配送中的订单
     void getDistributionOrder(int uid, String latitude, String longitude, String orderId, ServiceCallback<ServiceResponse<Void>> callback);
 
-    //已完成订单
-    void getFinishedOrder(int uid, String latitude, String longitude, String orderId, ServiceCallback<ServiceResponse<Void>> callback);
 
-    //未接订单
+    /**
+     * 已完成订单
+     * @param uid 用户id
+     * @param latitude 纬度
+     * @param longitude 经度
+     * @param orderId 订单号
+     * @param callback
+     */
+    void getFinishedOrder(int uid, String latitude, String longitude, String orderId, ServiceCallback<ServiceResponse<FinishedOrder>> callback);
+
+
+
+    /**
+     *  未接订单
+     * @param uid 用户id
+     * @param latitude 纬度
+     * @param longitude 经度
+     * @param callback
+     */
     void getUnReceiveOrder(int uid, String latitude, String longitude, ServiceCallback<ServiceResponse<Void>> callback);
     /**
      * 我的收入(7-12)
@@ -125,4 +144,39 @@ public interface WebService {
      * @param callback
      */
     void ApplyWithdrawal(int uid,String bankNumber,String money,ServiceCallback<ServiceResponse<Void>>callback);
+
+    /**
+     * 邀请兄弟
+     * @param uid 用户id
+     * @param invitationCode 邀请码
+     * @param callback
+     */
+    void inviteBrother(int uid,String invitationCode,ServiceCallback<ServiceResponse<Void>>callback);
+    /**
+     * 处理邀请
+     * @param uid 用户id
+     * @param inviteUserId 邀请用户id
+     * @param status 状态2同意3拒绝
+     * @param callback
+     */
+    void handleInvitation(int uid,int inviteUserId,int status,ServiceCallback<ServiceResponse<Void>>callback);
+    /**
+     * 我的邀请
+     * @param uid 用户id
+     * @param page 页码
+     * @param pageNumber 每页数据量
+     * @param callback
+     */
+    void getMyInvitation(int uid,int page,int pageNumber,ServiceCallback<ServiceResponse<MyInvitation>>callback );
+
+    /**
+     *获取我的兄弟
+     * @param uid 用户id
+     * @param collation 排序规则
+     * @param keyword 搜索关键词
+     * @param page 页码
+     * @param pageNumber 每页数据
+     * @param callback 回调
+     */
+    void getMyBrother(int uid,int collation,String keyword,int page,int pageNumber,ServiceCallback<ServiceResponse<GetMyBrother>>callback);
 }
