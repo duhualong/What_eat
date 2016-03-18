@@ -7,6 +7,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 import java.lang.reflect.Type;
 
+import first.com.what_eat.model.DeliveryOrder;
 import first.com.what_eat.model.FinishedOrder;
 import first.com.what_eat.model.GetMyBrother;
 import first.com.what_eat.model.MakeRunner;
@@ -40,10 +41,10 @@ public class WebServiceImpl implements WebService{
 
     /**
      * 成为跑腿
-     * @param phone
-     * @param password
-     * @param captcha
-     * @param nickname
+     * @param phone 手机号
+     * @param password 密码
+     * @param captcha 短信验证码
+     * @param nickname 昵称
      * @param callback
      */
 
@@ -85,9 +86,9 @@ public class WebServiceImpl implements WebService{
 
     /**
      * 跑腿端登录
-     * @param username
-     * @param password
-     * @param groupId
+     * @param username 用户名
+     * @param password 密码
+     * @param groupId  4成为跑腿
      * @param callback
      */
 
@@ -129,10 +130,10 @@ public class WebServiceImpl implements WebService{
     }
 
     /**
-     * 完善信息
-     * @param uid
-     * @param prefectField
-     * @param prefectValue
+     * 完善资料
+     * @param uid 用户id
+     * @param prefectField 字段名称
+     * @param prefectValue 值
      * @param callback
      */
     @Override
@@ -167,8 +168,8 @@ public class WebServiceImpl implements WebService{
 
     /**
      * 设置上班下班
-     * @param uid
-     * @param workStatus
+     * @param uid 用户id
+     * @param workStatus 上班1 下班0
      * @param callback
      */
     @Override
@@ -203,10 +204,10 @@ public class WebServiceImpl implements WebService{
 
     /**
      * 设置现住的地址
-     * @param uid
-     * @param address
-     * @param latitude
-     * @param longitude
+     * @param uid 用户id
+     * @param address 用户详细地址
+     * @param latitude 纬度
+     * @param longitude 经度
      * @param callback
      */
     @Override
@@ -244,11 +245,11 @@ public class WebServiceImpl implements WebService{
 
     /**
      * 我的收入
-     * @param uid
-     * @param startTime
-     * @param endTime
-     * @param page
-     * @param offset
+     * @param uid 用户id
+     * @param startTime 开始时间
+     * @param endTime 结束时间
+     * @param page 页码
+     * @param offset 页码数量
      * @param callback
      */
     @Override
@@ -284,9 +285,9 @@ public class WebServiceImpl implements WebService{
 
     /**
      * 附近抢单页
-     * @param uid
-     * @param latitude
-     * @param longitude
+     * @param uid 用户id
+     * @param latitude 纬度
+     * @param longitude 经度
      * @param callback
      */
     @Override
@@ -321,10 +322,10 @@ public class WebServiceImpl implements WebService{
 
     /**
      * 订单详情
-     * @param uid
-     * @param orderId
-     * @param latitude
-     * @param longitude
+     * @param uid 用户id
+     * @param orderId 订单号
+     * @param latitude 纬度
+     * @param longitude 经度
      * @param callback
      */
     @Override
@@ -361,10 +362,10 @@ public class WebServiceImpl implements WebService{
 
     /**
      * 接单
-     * @param uid
-     * @param orderId
-     * @param latitude
-     * @param longitude
+     * @param uid 用户id
+     * @param orderId 订单号
+     * @param latitude 纬度
+     * @param longitude 经度
      * @param callback
      */
     @Override
@@ -398,25 +399,49 @@ public class WebServiceImpl implements WebService{
     }
 
     /**
-     * 配送中订单
-     * @param uid
-     * @param latitude
-     * @param longitude
-     * @param orderId
+     *  配送中的订单
+     * @param uid 用户id
+     * @param latitude 纬度
+     * @param longitude 经度
+     * @param orderId 订单号
      * @param callback
      */
     @Override
-    public void getDistributionOrder(int uid, String latitude, String longitude, String orderId, ServiceCallback<ServiceResponse<Void>> callback) {
+    public void getDistributionOrder(int uid, String latitude, String longitude, String orderId, final ServiceCallback<ServiceResponse<DeliveryOrder>> callback) {
         String url=Constant.PUBLIC_URL+Constant.DISTRIBUTION_ORDER;
+        JsonObject jsonObject=new JsonObject();
+        jsonObject.addProperty("uid",uid);
+        jsonObject.addProperty("lat",latitude);
+        jsonObject.addProperty("lng",longitude);
+        jsonObject.addProperty("keyword",orderId);
+        client.postWithJson(url, jsonObject.toString(), false, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                callback.onFailure("");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result=response.body().string();
+                Type type=new TypeToken<ServiceResponse<DeliveryOrder>>(){}.getType();
+                ServiceResponse<DeliveryOrder>serviceResponse= gson.fromJson(result, type);
+                int code=serviceResponse.getCode();
+                if (code==200){
+                    callback.onSuccess(serviceResponse);
+                }else {
+                    callback.onFailure("");
+                }
+            }
+        });
 
     }
 
     /**
      * 已完成订单
-     * @param uid
-     * @param latitude
-     * @param longitude
-     * @param orderId
+     * @param uid 用户id
+     * @param latitude 纬度
+     * @param longitude 经度
+     * @param orderId 订单号
      * @param callback
      */
     @Override

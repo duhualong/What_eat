@@ -1,5 +1,6 @@
 package first.com.what_eat.web;
 
+import first.com.what_eat.model.DeliveryOrder;
 import first.com.what_eat.model.FinishedOrder;
 import first.com.what_eat.model.GetMyBrother;
 import first.com.what_eat.model.MakeRunner;
@@ -18,35 +19,100 @@ import first.com.what_eat.model.ServiceResponse;
  * 邮箱2383335125@qq.com
  */
 public interface WebService {
-    //成为跑腿
+    /**
+     * 成为跑腿
+     * @param phone 手机号
+     * @param password 密码
+     * @param captcha 短信验证码
+     * @param nickname 昵称
+     * @param callback
+     */
     void getMakeRunner(String phone, String password, String captcha, String nickname, ServiceCallback<ServiceResponse<MakeRunner>> callback);
 
-    //跑腿端登录
+    /**
+     * 跑腿端登录
+     * @param username 用户名
+     * @param password 密码
+     * @param groupId  4成为跑腿
+     * @param callback
+     */
     void getRunnerLoading(String username, String password, int groupId, ServiceCallback<ServiceResponse<RunnerLoading>> callback);
 
-    //完善资料
+    /**
+     * 完善资料
+     * @param uid 用户id
+     * @param prefectField 字段名称
+     * @param prefectValue 值
+     * @param callback
+     */
     void updatePerfectData(int uid, String prefectField, String prefectValue, ServiceCallback<ServiceResponse<Void>> callback);
 
-    //设置上班下班
+    /**
+     * 设置上班下班
+     * @param uid 用户id
+     * @param workStatus 上班1 下班0
+     * @param callback
+     */
     void setWorkStatus(int uid, int workStatus, ServiceCallback<ServiceResponse<Void>> callback);
 
-    //设置现住的地址
+    /**
+     * 设置现住的地址
+     * @param uid 用户id
+     * @param address 用户详细地址
+     * @param latitude 纬度
+     * @param longitude 经度
+     * @param callback
+     * */
     void setCurrentAddress(int uid, String address, String latitude, String longitude, ServiceCallback<ServiceResponse<Void>> callback);
-
-    //我的收入
+    /**
+     * 我的收入
+     * @param uid 用户id
+     * @param startTime 开始时间
+     * @param endTime 结束时间
+     * @param page 页码
+     * @param offset 页码数量
+     * @param callback
+     */
     void getMyIncome(int uid, int startTime, int endTime, int page, int offset, ServiceCallback<ServiceResponse<MyIncome>> callback);
 
-    //附近抢单页
+    /**  附近抢单页
+     * @param uid 用户id
+     * @param latitude 纬度
+     * @param longitude 经度
+     */
+
     void getNearOrder(int uid, String latitude, String longitude, ServiceCallback<ServiceResponse<NearOrder>> callback);
 
-    //订单详情
+    /**订单详情
+     *
+     * @param uid 用户id
+     * @param orderId 订单号
+     * @param latitude 纬度
+     * @param longitude 经度
+     * @param callback
+     */
     void getOrderDetail(int uid, String orderId, String latitude, String longitude, ServiceCallback<ServiceResponse<OrderDetail>> callback);
 
-    //接单
+    /**
+     * 接单
+     * @param uid 用户id
+     * @param orderId 订单号
+     * @param latitude 纬度
+     * @param longitude 经度
+     * @param callback
+     */
     void getReceiveOrder(int uid, String orderId, String latitude, String longitude, ServiceCallback<ServiceResponse<Void>> callback);
 
-    //配送中的订单
-    void getDistributionOrder(int uid, String latitude, String longitude, String orderId, ServiceCallback<ServiceResponse<Void>> callback);
+
+    /**
+     *  配送中的订单
+     * @param uid 用户id
+     * @param latitude 纬度
+     * @param longitude 经度
+     * @param orderId 订单号
+     * @param callback
+     */
+    void getDistributionOrder(int uid, String latitude, String longitude, String orderId, ServiceCallback<ServiceResponse<DeliveryOrder>> callback);
 
 
     /**
